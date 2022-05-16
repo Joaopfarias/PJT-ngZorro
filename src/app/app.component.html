@@ -53,16 +53,91 @@
   </nz-layout>
 </nz-layout> -->
 <nz-layout>
-  <nz-sider>
-    <app-sidemenu></app-sidemenu>
+  <nz-sider nzCollapsible [nzCollapsed]="true" nzWidth="200px">
+    <div class="logo">
+      <i nz-icon nzType="ng-zorro:antd"></i>
+    </div>
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <li nz-menu-item>
+        <i nz-icon nzType="pie-chart"></i>
+        <span>Option 1</span>
+      </li>
+      <li nz-menu-item>
+        <i nz-icon nzType="desktop"></i>
+        <span>Option 2</span>
+      </li>
+      <li nz-submenu nzTitle="User" nzIcon="user">
+        <ul>
+          <li nz-menu-item>Tom</li>
+          <li nz-menu-item>Bill</li>
+          <li nz-menu-item>Alex</li>
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="Team" nzIcon="team">
+        <ul>
+          <li nz-menu-item>Team 1</li>
+          <li nz-menu-item>Team 2</li>
+        </ul>
+      </li>
+      <li nz-menu-item>
+        <i nz-icon nzType="file"></i>
+        <span>File</span>
+      </li>
+    </ul>
   </nz-sider>
   <nz-layout>
     <nz-header>
-      <app-header></app-header>
+      <ul nz-menu nzTheme="dark" nzMode="horizontal">
+        <li nz-menu-item nzSelected>
+          <i nz-icon nzType="mail"></i>
+          Navigation One
+        </li>
+        <li nz-menu-item nzDisabled>
+          <i nz-icon nzType="appstore"></i>
+          Navigation Two
+        </li>
+        <li nz-submenu nzTitle="Navigation Three - Submenu" nzIcon="setting">
+          <ul>
+            <li nz-menu-group nzTitle="Item 1">
+              <ul>
+                <li nz-menu-item>Option 1</li>
+                <li nz-menu-item>Option 2</li>
+              </ul>
+            </li>
+            <li nz-menu-group nzTitle="Item 2">
+              <ul>
+                <li nz-menu-item>Option 3</li>
+                <li nz-menu-item>Option 4</li>
+                <li nz-submenu nzTitle="Sub Menu">
+                  <ul>
+                    <li nz-menu-item nzDisabled>Option 5</li>
+                    <li nz-menu-item>Option 6</li>
+                  </ul>
+                </li>
+                <li nz-submenu nzDisabled nzTitle="Disabled Sub Menu">
+                  <ul>
+                    <li nz-menu-item>Option 5</li>
+                    <li nz-menu-item>Option 6</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li nz-menu-item>
+          <a href="https://ng.ant.design" target="_blank" rel="noopener noreferrer">Navigation Four - Link</a>
+        </li>
+      </ul>
     </nz-header>
-    <nz-content>Content</nz-content>
+    <nz-content>
+      <router-outlet></router-outlet>
+    </nz-content>
     <nz-footer>
-      <app-footer></app-footer>
+      <div nzTheme="dark">
+        <span>
+          Ant Design ©2020 Implement By Angular
+        </span>
+      </div>
     </nz-footer>
   </nz-layout>
 </nz-layout>

@@ -14,19 +14,13 @@ import { IconsProviderModule } from './icons-provider.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { HomeModule } from './modules/pages/home/home.module';
-import { SidemenuComponent } from './components/layout/sidemenu/sidemenu.component';
-import { NgZorroAntdModule } from './ng-zorro-antd-module.module';
-import { HeaderComponent } from './components/layout/header/header.component';
-import { FooterComponent } from './components/layout/footer/footer.component';
+import { NgZorroAntdModule } from './ng-zorro-antd.module';
 
 registerLocaleData(pt);
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidemenuComponent,
-    HeaderComponent,
-    FooterComponent
   ],
   imports: [
     BrowserModule,
