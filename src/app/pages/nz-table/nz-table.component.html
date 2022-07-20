@@ -1,0 +1,59 @@
+<div class="d-flex">
+  <nz-page-header class="site-page-header" (nzBack)="onBack()" nzBackIcon nzTitle="Voltar">
+  </nz-page-header>
+  <nz-breadcrumb>
+    <nz-breadcrumb-item>
+      <a [routerLink]="['../']">Home</a>
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item>nzTable</nz-breadcrumb-item>
+  </nz-breadcrumb>
+</div>
+<div class="main d-flex justify-content-center">
+  <div class="table-content">
+    <div class="search-box my-3 d-flex justify-content-end">
+      <div class="col-md-4 ">
+        <nz-input-group [nzSuffix]="suffixIconSearch">
+          <input type="text" nz-input placeholder="input search text" />
+        </nz-input-group>
+        <ng-template #suffixIconSearch>
+          <i nz-icon nzType="search"></i>
+        </ng-template>
+      </div>
+    </div>
+    <div class="send-request">
+      <button nz-button nzType="primary" [disabled]="setOfCheckedId.size === 0" [nzLoading]="loading"
+        (click)="sendRequest()">
+        Send Request
+      </button>
+      <span>Selected {{ setOfCheckedId.size }} items</span>
+    </div>
+    <nz-table #rowSelectionTable nzShowPagination nzShowSizeChanger [nzData]="listOfData"
+      [nzLoading]="settingValue.loading" (nzCurrentPageDataChange)="onCurrentPageDataChange($event)">
+      <thead>
+        <tr>
+          <th [nzChecked]="checked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="onAllChecked($event)"></th>
+          <th>API</th>
+          <th>Auth</th>
+          <th>Category</th>
+          <th>Cors</th>
+          <th>Description</th>
+          <th>HTTPS</th>
+          <th>Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of rowSelectionTable.data">
+          <td [nzChecked]="setOfCheckedId.has(data.id)" [nzDisabled]="data.disabled"
+            (nzCheckedChange)="onItemChecked(data.id, $event)"></td>
+          <td>{{ data.API }}</td>
+          <td>{{ data.Auth || '-' }}</td>
+          <td>{{ data.Category }}</td>
+          <td>{{ data.Cors }}</td>
+          <td>{{ data.Description }}</td>
+          <td>{{ data.HTTPS }}</td>
+          <td><a href="{{data.link}}" target="_blank">{{ data.Link | nzEllipsis: 26:'...' }}</a></td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</div>

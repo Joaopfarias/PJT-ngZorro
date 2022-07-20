@@ -1,0 +1,42 @@
+
+  <div class="main d-flex justify-content-center">
+    <div class="table-content">
+      <div class="search-box my-3 d-flex justify-content-end">
+        <div class="col-md-4 ">
+          <nz-input-group [nzSuffix]="suffixIconSearch">
+            <input type="text" nz-input placeholder="input search text" />
+          </nz-input-group>
+          <ng-template #suffixIconSearch>
+            <i nz-icon nzType="search"></i>
+          </ng-template>
+        </div>
+      </div>
+      <div class="send-request">
+        <button nz-button nzType="primary" [disabled]="setOfCheckedId.size === 0" [nzLoading]="loading"
+          (click)="sendRequest()">
+          Send Request
+        </button>
+        <span>Selected {{ setOfCheckedId.size }} items</span>
+      </div>
+      <nz-table #rowSelectionTable nzShowPagination nzShowSizeChanger [nzData]="listOfData"
+        (nzCurrentPageDataChange)="onCurrentPageDataChange($event)">
+        <thead>
+          <tr>
+            <th [nzChecked]="checked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="onAllChecked($event)"></th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of rowSelectionTable.data">
+            <td [nzChecked]="setOfCheckedId.has(data.id)" [nzDisabled]="data.disabled"
+              (nzCheckedChange)="onItemChecked(data.id, $event)"></td>
+            <td>{{ data.name }}</td>
+            <td>{{ data.age }}</td>
+            <td>{{ data.address }}</td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </div>

@@ -7,14 +7,16 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { pt_BR } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import pt from '@angular/common/locales/pt';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconsProviderModule } from './icons-provider.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
-import { HomeModule } from './modules/pages/home/home.module';
+import { HomeModule } from './pages/home/home.module';
 import { NgZorroAntdModule } from './ng-zorro-antd.module';
+import { NzTableComponent } from './pages/nz-table/nz-table.component';
+import { RouterModule } from '@angular/router';
 
 registerLocaleData(pt);
 
@@ -27,12 +29,14 @@ registerLocaleData(pt);
     HomeModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     IconsProviderModule,
     NzLayoutModule,
     NzMenuModule,
-    NgZorroAntdModule
+    NgZorroAntdModule,
+    RouterModule
   ],
   providers: [{ provide: NZ_I18N, useValue: pt_BR }],
   bootstrap: [AppComponent]

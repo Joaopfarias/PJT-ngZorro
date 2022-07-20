@@ -22,6 +22,15 @@ nz-content {
   background-color: #fff;
 }
 
+.main {
+  max-height: 75vh;
+  overflow: auto;
+}
+
 .ant-layout-header {
   padding: 0 0px !important;
+}
+
+.right-layout {
+  max-height: 100vh;
 }
