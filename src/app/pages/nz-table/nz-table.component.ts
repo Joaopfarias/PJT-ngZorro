@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Data } from '@angular/router';
 import { NzTableLayout, NzTablePaginationPosition, NzTablePaginationType, NzTableSize } from 'ng-zorro-antd/table';
-import { NzTableService } from './nz-table.service';
+import { NzTableService } from 'src/app/services/nz-table.service';
 
 interface Setting {
   bordered: boolean;
@@ -25,6 +25,16 @@ interface Setting {
   paginationType: NzTablePaginationType;
 }
 
+interface Option {
+  API: string;
+  Auth: string;
+  Category: string;
+  Cors: string;
+  Description: string;
+  HTTPS: boolean;
+  Link: string;
+}
+
 @Component({
   selector: 'app-nz-table',
   templateUrl: './nz-table.component.html',
@@ -32,7 +42,19 @@ interface Setting {
 })
 export class NzTableComponent implements OnInit {
   settingForm?: FormGroup;
+  // inputValue: Option = {
+  //   API: 'AdoptAPet', Auth: 'apiKey', Category: 'Animals', Cors: 'yes',
+  //   Description: 'Resource to help get pets adopted', Link: 'https://www.adoptapet.com/public/apis/pet_list.html', HTTPS: true
+  // };
+  inputValue: any
 
+  compareFun = (o1: Option | string, o2: Option): boolean => {
+    if (o1) {
+      return typeof o1 === 'string' ? o1 === o2.API : o1.HTTPS === o2.HTTPS;
+    } else {
+      return false;
+    }
+  };
   settingValue!: Setting;
   checked = false;
   loading = false;

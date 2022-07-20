@@ -11,10 +11,18 @@
 <div class="main d-flex justify-content-center">
   <div class="table-content">
     <div class="search-box my-3 d-flex justify-content-end">
+      
       <div class="col-md-4 ">
-        <nz-input-group [nzSuffix]="suffixIconSearch">
-          <input type="text" nz-input placeholder="input search text" />
-        </nz-input-group>
+        <div class="example-input">
+          <nz-input-group [nzSuffix]="suffixIconSearch">
+            <input type="text" placeholder="Pesquise aqui" nz-input [(ngModel)]="inputValue" [nzAutocomplete]="auto" />
+          </nz-input-group>
+          <nz-autocomplete #auto [compareWith]="compareFun">
+            <nz-auto-option *ngFor="let option of listOfData" [nzValue]="option.API" [nzLabel]="option.API">
+              {{ option.API }}
+            </nz-auto-option>
+          </nz-autocomplete>
+        </div>
         <ng-template #suffixIconSearch>
           <i nz-icon nzType="search"></i>
         </ng-template>
@@ -51,7 +59,7 @@
           <td>{{ data.Cors }}</td>
           <td>{{ data.Description }}</td>
           <td>{{ data.HTTPS }}</td>
-          <td><a href="{{data.link}}" target="_blank">{{ data.Link | nzEllipsis: 26:'...' }}</a></td>
+          <td><a href="{{data.Link}}" target="_blank">{{ data.Link | nzEllipsis: 26:'...' }}</a></td>
         </tr>
       </tbody>
     </nz-table>

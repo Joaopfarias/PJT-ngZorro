@@ -1,4 +1,13 @@
-
+<div class="d-flex">
+  <nz-page-header class="site-page-header" (nzBack)="onBack()" nzBackIcon nzTitle="Voltar">
+  </nz-page-header>
+  <nz-breadcrumb>
+    <nz-breadcrumb-item>
+      <a [routerLink]="['../']">Home</a>
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item>nzTable</nz-breadcrumb-item>
+  </nz-breadcrumb>
+</div>
   <div class="main d-flex justify-content-center">
     <div class="table-content">
       <div class="search-box my-3 d-flex justify-content-end">

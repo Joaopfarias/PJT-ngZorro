@@ -4,11 +4,11 @@
       <i nz-icon nzType="ng-zorro:antd"></i>
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
-      <li nz-menu-item [routerLink]="['/home']">
+      <li nz-menu-item [routerLink]="['/home']" [nzMatchRouter]="true" routerLinkActive="active">
         <i nz-icon nzType="home" nzTheme="outline"></i>
         <span>Home</span>
       </li>
-      <li nz-menu-item [routerLink]="['/nz-table']">
+      <li nz-menu-item [routerLink]="['/nz-table']" [nzMatchRouter]="true" routerLinkActive="active">
         <i nz-icon nzType="table" nzTheme="outline"></i>
         <span>nzTable</span>
       </li>

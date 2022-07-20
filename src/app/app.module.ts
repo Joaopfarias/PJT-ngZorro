@@ -26,10 +26,9 @@ registerLocaleData(pt);
   ],
   imports: [
     BrowserModule,
-    HomeModule,
-    AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
     IconsProviderModule,
